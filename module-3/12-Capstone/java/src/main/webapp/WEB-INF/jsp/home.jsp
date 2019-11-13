@@ -13,8 +13,7 @@
         <a href="${linkHref}">
         		<img src="${parkImg}" alt="Photo of ${park.parkName }" />
         </a>
-		
-	
+        <h4>${park.state }</h4>
         <p>${park.parkDescription }</p>
 
     </c:forEach>
