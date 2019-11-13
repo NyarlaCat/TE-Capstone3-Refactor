@@ -8,22 +8,15 @@
         
 <div id="main-content">
 	<c:forEach items="${parks}" var="park">
-		
-		<c:url value="/" var="homePageHref" />
-    		<c:url value="/img/logo.png" var="logoSrc" />
-        <a href="${homePageHref}">
-        		<img src="${logoSrc}" alt="National Park Geek logo" />
+		<section>
+        <h2>${park.parkName }</h2>
+     	<c:url value="parkDetail?id=${park.parkCode }" var="linkHref" />
+    		<c:url value="/img/${park.parkCode }.jpg" var="parkImg" />
+        <a href="${linkHref}">
+        		<img src="${parkImg}" alt="Photo of ${park.parkName }" />
         </a>
-   </header>  
-   
-   
-        <h2>${park.parkName }</h2><!-- can pull this name as a variable off the object -->
-        <c:url value="parkDetail?id=${park.parkCode }" var="linkTo" />
-        <c:url var="ImgSrc" value="/img/${park.parkCode }.jpg" />
-        
-		<img src="${ImgSrc}" alt="Photo of ${park.parkName }">
 		
-        <p></p>
+        <p>${park.parkDescription }</p>
     </section>
     
     </c:forEach>
