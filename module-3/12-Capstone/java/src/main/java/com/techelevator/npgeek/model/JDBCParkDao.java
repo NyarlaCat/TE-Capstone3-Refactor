@@ -10,8 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import com.techelevator.dao.model.Actor;
-import com.techelevator.model.Campground;
+
 import com.techelevator.npgeek.Park;
 import com.techelevator.npgeek.model.interfaces.ParkDao;
 
@@ -25,7 +24,7 @@ public class JDBCParkDao implements ParkDao {
 		this.jdbcTemplate = new JdbcTemplate(datasource);
 	}
 	
-		
+		//Tested
 		@Override
 	    public List<Park> getAllParks() {
 	        List<Park> parks = new ArrayList<>();

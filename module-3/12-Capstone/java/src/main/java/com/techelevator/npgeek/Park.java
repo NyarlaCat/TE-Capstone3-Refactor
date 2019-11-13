@@ -17,6 +17,12 @@ public class Park {
 	private String parkDescription;
 	private int entryFee;
 	private int numberOfAnimalSpecies;
+	
+	public String getImgCode() {
+		String imgCode = parkCode.toLowerCase();
+		return imgCode;
+	}
+	
 	public String getParkCode() {
 		return parkCode;
 	}

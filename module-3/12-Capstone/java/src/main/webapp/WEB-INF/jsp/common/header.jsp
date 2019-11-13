@@ -20,7 +20,7 @@
     <nav>
         <h2>Explore National Parks</h2>
         <ul>
-            <li><a href="alienAgeCalculatorInput">Home</a></li>
-            <li><a href="alienWeightCalculatorInput">Survey</a></li>
+            <li><a href="home">Home</a></li>
+            <li><a href="surveyInput">Survey</a></li>
         </ul>
     </nav>

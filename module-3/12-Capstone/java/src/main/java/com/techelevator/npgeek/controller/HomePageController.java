@@ -21,7 +21,8 @@ public class HomePageController {
 	public String displayHomePage(HttpSession session) {
 
 		List<Park> park = parkDao.getAllParks();
-		session.setAttribute("park", park);
+		session.setAttribute("parks", park);
+		
 		
 		return "home";
 	}
