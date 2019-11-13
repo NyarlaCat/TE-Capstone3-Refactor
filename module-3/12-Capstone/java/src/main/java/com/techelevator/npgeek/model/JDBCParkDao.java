@@ -42,7 +42,9 @@ public class JDBCParkDao implements ParkDao {
 	        
 	        
 	    }
-	    
+	    //Method to take in String and return a Park object by parkCode
+		
+		
 	 	    
 		private Park mapParkToRowSet(SqlRowSet results) {
 			Park newPark = new Park();
@@ -69,8 +71,21 @@ public class JDBCParkDao implements ParkDao {
 	
 	@Override
 	public Park getParkByCode(String parkCode) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Park newPark= new Park();
+        String parkSearchSql = "SELECT parkcode, parkname, state, acreage, elevationinfeet, milesoftrail,"
+        		+ "numberofcampsites, climate, yearfounded, annualvisitorcount, inspirationalquote,"
+        		+ "inspirationalquotesource, parkdescription, entryfee, numberofanimalspecies FROM park"
+        		+ "WHERE parkcode = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(parkSearchSql, parkCode);
+        
+        while(results.next() ) {
+        	newPark = mapParkToRowSet(results);
+		
+		}
+        
+		return newPark;
+		
 	}
 
 	@Override
