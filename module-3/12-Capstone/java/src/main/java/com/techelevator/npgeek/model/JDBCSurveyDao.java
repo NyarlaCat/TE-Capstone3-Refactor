@@ -19,6 +19,7 @@ public class JDBCSurveyDao implements SurveyDao{
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
+	//Tested
 	@Override
 	public Survey save(Survey survey) {
 		
