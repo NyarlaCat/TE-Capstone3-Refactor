@@ -17,6 +17,7 @@ public class HomePageController {
 	
 	@Autowired
 	private ParkDao parkDao;
+	
 	@RequestMapping(path= {"/","/home"}, method = RequestMethod.GET)
 	public String displayHomePage(HttpSession session) {
 

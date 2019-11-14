@@ -47,6 +47,20 @@ public class ParkDaoIntegrationTest extends DAOIntegrationTest {
 		
 		
 	}
+	
+	@Test
+	public void getParkByCodeWorksToReturnTheExpectedPark() {
+		Park newPark = makeFakeParkInTheDataBase("LBZJ", "Linden BeeZ Johnson");
+		
+		Park parkReturnedByMethod = parkDao.getParkByCode("LBZJ");
+		
+		String expectedName = newPark.getParkName();
+		String actualNameReturnedByMethod = parkReturnedByMethod.getParkName();
+		
+		Assert.assertEquals(expectedName, actualNameReturnedByMethod);
+		
+		
+	}
 
 	private Park makeFakeParkInTheDataBase(String parkCode, String parkName) {
 		Park newPark = new Park();

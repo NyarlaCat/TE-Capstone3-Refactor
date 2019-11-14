@@ -42,35 +42,27 @@ public class JDBCParkDao implements ParkDao {
 	        
 	        
 	    }
-	    
-	 	    
-		private Park mapParkToRowSet(SqlRowSet results) {
-			Park newPark = new Park();
-			newPark.setParkCode(results.getString("parkcode"));
-			newPark.setParkName(results.getString("parkname"));
-			newPark.setState(results.getString("state"));
-			newPark.setAcreage(results.getInt("acreage"));
-			newPark.setElevationInFeet(results.getInt("elevationinfeet"));
-			newPark.setMilesOfTrail(results.getDouble("milesoftrail"));
-			newPark.setNumberOfCampsites(results.getInt("numberofcampsites"));
-			newPark.setClimate(results.getString("climate"));
-			newPark.setYearFounded(results.getInt("yearfounded"));
-			newPark.setAnnualVisitorCount(results.getInt("annualvisitorcount"));
-			newPark.setInspirationalQuote(results.getString("inspirationalquote"));
-			newPark.setInspirationalQuoteSource(results.getString("inspirationalquotesource"));
-			newPark.setParkDescription(results.getString("parkdescription"));
-			newPark.setEntryFee(results.getInt("entryfee"));
-			newPark.setNumberOfAnimalSpecies(results.getInt("numberofanimalspecies"));
-			
-			return newPark;
-		}
+	    //Method to take in String and return a Park object by parkCode
 		
 		
-	
+	//Tested
 	@Override
 	public Park getParkByCode(String parkCode) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Park newPark= new Park();
+        String parkSearchSql = "SELECT parkcode, parkname, state, acreage, elevationinfeet, milesoftrail,"
+        		+ "numberofcampsites, climate, yearfounded, annualvisitorcount, inspirationalquote,"
+        		+ "inspirationalquotesource, parkdescription, entryfee, numberofanimalspecies FROM park "
+        		+ "WHERE parkcode = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(parkSearchSql, parkCode);
+        
+        while(results.next() ) {
+        	newPark = mapParkToRowSet(results);
+		
+		}
+        
+		return newPark;
+		
 	}
 
 	@Override
@@ -78,5 +70,27 @@ public class JDBCParkDao implements ParkDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	    
+	private Park mapParkToRowSet(SqlRowSet results) {
+		Park newPark = new Park();
+		newPark.setParkCode(results.getString("parkcode"));
+		newPark.setParkName(results.getString("parkname"));
+		newPark.setState(results.getString("state"));
+		newPark.setAcreage(results.getInt("acreage"));
+		newPark.setElevationInFeet(results.getInt("elevationinfeet"));
+		newPark.setMilesOfTrail(results.getDouble("milesoftrail"));
+		newPark.setNumberOfCampsites(results.getInt("numberofcampsites"));
+		newPark.setClimate(results.getString("climate"));
+		newPark.setYearFounded(results.getInt("yearfounded"));
+		newPark.setAnnualVisitorCount(results.getInt("annualvisitorcount"));
+		newPark.setInspirationalQuote(results.getString("inspirationalquote"));
+		newPark.setInspirationalQuoteSource(results.getString("inspirationalquotesource"));
+		newPark.setParkDescription(results.getString("parkdescription"));
+		newPark.setEntryFee(results.getInt("entryfee"));
+		newPark.setNumberOfAnimalSpecies(results.getInt("numberofanimalspecies"));
+		
+		return newPark;
+	}
+	
 
 }
