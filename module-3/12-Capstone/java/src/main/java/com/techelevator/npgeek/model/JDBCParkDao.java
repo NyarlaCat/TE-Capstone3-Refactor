@@ -20,8 +20,8 @@ public class JDBCParkDao implements ParkDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
-	public JDBCParkDao(DataSource datasource) {
-		this.jdbcTemplate = new JdbcTemplate(datasource);
+	public JDBCParkDao(DataSource dataSource) {
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
 		//Tested
