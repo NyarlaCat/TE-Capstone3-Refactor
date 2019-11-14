@@ -45,7 +45,7 @@ public class JDBCParkDao implements ParkDao {
 	    //Method to take in String and return a Park object by parkCode
 		
 		
-	
+	//Tested
 	@Override
 	public Park getParkByCode(String parkCode) {
 		
