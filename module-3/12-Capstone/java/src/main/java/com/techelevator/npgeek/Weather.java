@@ -7,12 +7,20 @@ public class Weather {
 	private int low;
 	private int high;
 	private String forecast;
+	private String forecastImage;
 	
+	
+	public String getForecastImage() {
+		return forecastImage;
+	}
+	public void setForecastImage(String forecastImage) {
+		this.forecastImage = forecastImage;
+	}
 	public String getParkCode() {
 		return parkCode;
 	}
 	public void setParkCode(String parkCode) {
-		this.parkCode = parkCode;
+		this.parkCode = parkCode; 
 	}
 	public int getFiveDayForecastValue() {
 		return fiveDayForecastValue;

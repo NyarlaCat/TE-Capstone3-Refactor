@@ -18,7 +18,7 @@ import com.techelevator.npgeek.model.interfaces.WeatherDao;
 public class JDBCWeatherDao implements WeatherDao{
 
 	private JdbcTemplate jdbcTemplate;
-
+ 
 	@Autowired
 	public JDBCWeatherDao(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -29,7 +29,8 @@ public class JDBCWeatherDao implements WeatherDao{
 		
 		List<Weather> weather = new ArrayList<>();
 		
-        String weatherSearchSql = "SELECT parkcode, fivedayforecastvalue, high, low, forecast "
+        String weatherSearchSql = "SELECT parkcode, fivedayforecastvalue, high, low, forecast, "
+        					 + "CASE forecast WHEN 'partly cloudy' THEN 'partlyCloudy' ELSE forecast END as forecastImage "
         					 + "FROM weather "
         					 + "WHERE parkcode = ? "
         					 + "GROUP BY parkcode, fivedayforecastvalue "
@@ -56,6 +57,7 @@ public class JDBCWeatherDao implements WeatherDao{
 		newWeather.setHigh(results.getInt("high"));
 		newWeather.setLow(results.getInt("low"));
 		newWeather.setForecast(results.getString("forecast"));
+		newWeather.setForecastImage(results.getString("forecastImage"));
 		
 		return newWeather;
 	}
