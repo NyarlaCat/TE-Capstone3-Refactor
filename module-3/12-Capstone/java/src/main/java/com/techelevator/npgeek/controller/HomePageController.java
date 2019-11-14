@@ -24,6 +24,7 @@ public class HomePageController {
 		List<Park> park = parkDao.getAllParks();
 		session.setAttribute("parks", park);
 		
+		
 		return "home";
 	}
 }
