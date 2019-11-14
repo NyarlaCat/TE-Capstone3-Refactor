@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
-	<c:url var="formAction" value="/productDetails" />
+
+	<c:url var="formAction" value="/parkDetails" />
 	<form method="GET" action="${formAction}">
 	
 
