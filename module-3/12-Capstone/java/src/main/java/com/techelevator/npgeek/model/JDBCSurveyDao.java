@@ -21,6 +21,7 @@ public class JDBCSurveyDao implements SurveyDao{
 
 	@Override
 	public Survey save(Survey survey) {
+		
 		String sqlInsert = "INSERT INTO survey_result(parkcode, emailaddress, state, activitylevel) "
 						  +"VALUES (?, ?, ?, ?) RETURNING surveyid";
 		long surveyId = jdbcTemplate.queryForObject(sqlInsert, Long.TYPE, survey.getParkCode(),survey.getEmail(), survey.getState(), survey.getActivityLevel());
