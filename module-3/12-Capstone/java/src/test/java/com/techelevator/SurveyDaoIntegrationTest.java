@@ -1,67 +1,55 @@
 package com.techelevator;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.sql.DataSource;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.techelevator.npgeek.Park;
-import com.techelevator.npgeek.model.JDBCParkDao;
+import com.techelevator.npgeek.Survey;
+import com.techelevator.npgeek.model.JDBCSurveyDao;
 
- 
-public class ParkDaoIntegrationTest extends DAOIntegrationTest {
+public class SurveyDaoIntegrationTest extends DAOIntegrationTest{
+
 	private JdbcTemplate jdbcTemplate;
-	private JDBCParkDao parkDao;
+	private JDBCSurveyDao surveyDao;
 	
 	@Before
 	public void instanciateForTesting() {
-		parkDao = new JDBCParkDao(getDataSource());
+		surveyDao = new JDBCSurveyDao(getDataSource());
 		jdbcTemplate = new JdbcTemplate(getDataSource());
 
 	}
-	
-	@Test
-	public void checkThatGetAllParksWorksAndReturnsAList() {
-		List<Park> parkList = parkDao.getAllParks();
-		
-		int listSizeBefore = parkList.size();
-		
-		Park park1 = makeFakeParkInTheDataBase("JDC", "Joe Desert Clif");
-		Park park2 = makeFakeParkInTheDataBase("HJK", "Holy Jackelope Kids");
-		
-		parkList.add(park1);
-		parkList.add(park2);
-		
-		
-		int expectedSize = listSizeBefore + 2;
-	
-		int actualSize = parkList.size();
-		
-		Assert.assertEquals(expectedSize, actualSize);
-		
-		
-	}
-	
-	@Test
-	public void getParkByCodeWorksToReturnTheExpectedPark() {
-		Park newPark = makeFakeParkInTheDataBase("LBZJ", "Linden BeeZ Johnson");
-		
-		Park parkReturnedByMethod = parkDao.getParkByCode("LBZJ");
-		
-		String expectedName = newPark.getParkName();
-		String actualNameReturnedByMethod = parkReturnedByMethod.getParkName();
-		
-		Assert.assertEquals(expectedName, actualNameReturnedByMethod);
-		
-		
-	}
 
+	@Test
+	public void testSaveSurveyMethod() {
+		Park newPark = makeFakeParkInTheDataBase("ZXY", "I whatever");
+		Survey newSurvey = makeSurvey(newPark.getParkCode());
+		
+		Survey savedSurvey = surveyDao.save(newSurvey);
+		
+		String expectedParkCode = newPark.getParkCode();
+		String actualParkkCode = savedSurvey.getParkCode();
+		
+		Assert.assertEquals(expectedParkCode, actualParkkCode);
+		
+		
+	}
+	
+	
+	private Survey makeSurvey(String parkCode) {
+		Survey newSurvey = new Survey();
+		 
+		newSurvey.setActivityLevel("Low");
+		newSurvey.setEmail("jerry@hotmail.com");
+		newSurvey.setParkCode(parkCode);
+		newSurvey.setState("Texas");
+		
+		return newSurvey;
+		
+	}
+	
+	
 	private Park makeFakeParkInTheDataBase(String parkCode, String parkName) {
 		Park newPark = new Park();
 		

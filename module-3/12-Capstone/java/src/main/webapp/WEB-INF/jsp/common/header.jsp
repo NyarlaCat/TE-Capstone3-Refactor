@@ -21,6 +21,7 @@
         <h2>Explore National Parks</h2>
         <ul>
             <li><a href="home">Home</a></li>
-            <li><a href="surveyInput">Survey</a></li>
+            <li><a href="survey">Survey</a></li>
+            <li><a href="favoritePark">Favorite Parks</a></li>
         </ul>
     </nav>

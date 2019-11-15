@@ -43,7 +43,7 @@ public class JDBCWeatherDao implements WeatherDao{
 			Weather newWeather = mapWeatherToRowSet(results);
 			weather.add(newWeather);
 		}
-        
+          
 		return weather;
 		
 	}
