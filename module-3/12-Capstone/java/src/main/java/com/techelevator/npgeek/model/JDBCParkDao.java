@@ -67,10 +67,26 @@ public class JDBCParkDao implements ParkDao {
 
 	@Override
 	public List<Park> sortFavoritePark() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		 List<Park> parks = new ArrayList<>();
+	        String parkSearchSql = "SELECT count(survey result.parkcode) count, park.parkcode, park.parkname "
+	        		             + "FROM survey_result "
+	        		             + "JOIN park ON survey_result.parkcode = park.parkcode "
+	        		             + "GROUP BY park.parkcode "
+	        		             + "ORDER BY count DESC";
+	        
+	        SqlRowSet results = jdbcTemplate.queryForRowSet(parkSearchSql);
+	        
+	        while(results.next() ) {
+				Park newPark = mapParkToRowSet(results);
+				parks.add(newPark);
+			}
+	        
+			return parks;
 	}
 	    
+	
+	
 	private Park mapParkToRowSet(SqlRowSet results) {
 		Park newPark = new Park();
 		newPark.setParkCode(results.getString("parkcode"));
