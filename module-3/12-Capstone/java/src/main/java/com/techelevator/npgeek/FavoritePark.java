@@ -5,6 +5,12 @@ public class FavoritePark {
 	private String parkName;
 	private String parkCode;
 	private int count;
+	
+	public String getImgCode() {
+		String imgCode = parkCode.toLowerCase();
+		return imgCode;
+	}
+	
 	public String getParkName() {
 		return parkName;
 	}

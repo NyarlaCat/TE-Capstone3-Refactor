@@ -11,7 +11,6 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.npgeek.FavoritePark;
-import com.techelevator.npgeek.Park;
 import com.techelevator.npgeek.model.interfaces.FavoriteParkDao;
 
 @Component
@@ -29,7 +28,7 @@ public class JDBCFavoriteParkDao implements FavoriteParkDao {
 	
 	
 			 List<FavoritePark> parks = new ArrayList<>();
-		        String parkSearchSql = "SELECT count(survey result.parkcode) count, park.parkcode, park.parkname "
+		        String parkSearchSql = "SELECT count(survey_result.parkcode) count, park.parkcode, park.parkname "
 		        		             + "FROM survey_result "
 		        		             + "JOIN park ON survey_result.parkcode = park.parkcode "
 		        		             + "GROUP BY park.parkcode "

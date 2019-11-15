@@ -9,7 +9,7 @@
 		<div class="formInputGroup">
 			<label for="parkCode">What is your favorite park?</label>
 			<select name="parkCode">
-				<c:forEach items="${parks}" var="park">
+				<c:forEach items="${surveyPark}" var="park">
 				<option value="${park.parkCode }">${park.parkName }</option>
 				</c:forEach>
 			</select>
