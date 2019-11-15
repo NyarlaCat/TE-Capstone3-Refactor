@@ -3,7 +3,7 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 <c:url var="formAction" value="/parkWeather" />
-	<form method="GET" action="${formAction}">
+<form method="POST" action="${formAction}">
 	
 <div id="main-content">
 <div class="centered">
@@ -11,7 +11,14 @@
 	<c:url value="/img/parks/${weatherPark.imgCode }.jpg" var="parkImg" ></c:url>
 	
 	<img src="${parkImg}" alt="Photo of ${weatherPark.parkName }" />
+	
+	<input type="hidden" name="id" value="${weatherPark.parkCode}" />
+	
+	<input type="submit" value="Convert Temperature"/>
+	
+ 	
 
+	
 	<c:forEach items="${weather}" var="dailyWeather">
 	<c:choose>
 		<c:when test="${dailyWeather.fiveDayForecastValue == 1 }">
@@ -23,8 +30,18 @@
 	<c:url value="/img/weather/${dailyWeather.forecastImage }.png" var="weatherImg" ></c:url>
 	<img src="${weatherImg}" alt="Clipart image of ${dailyWeather.forecastImage }" />
 	
-	<h2>Low: ${dailyWeather.low }</h2>
-	<h2>High: ${dailyWeather.high}</h2>
+	<c:choose>
+	<c:when test="${Temperature == 'C' }" >
+		<h2>Low: ${dailyWeather.farenheightToCelsiusLow} ${Temperature}</h2>
+		<h2>High: ${dailyWeather.farenheightToCelsiusHigh} ${Temperature}</h2>
+	</c:when>
+	<c:when test="${Temperature == 'F' ||  Temperature == null}">
+		<h2>Low: ${dailyWeather.low } F</h2>
+		<h2>High: ${dailyWeather.high} F</h2>
+	</c:when>
+	</c:choose>
+	
+	
 	<h2>Forecast: ${dailyWeather.forecast }</h2>
 	
 	<c:set var="weather" value="${dailyWeather.forecast}"></c:set>
@@ -80,5 +97,5 @@
 </div>
 
 </div>
-
+</form>
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

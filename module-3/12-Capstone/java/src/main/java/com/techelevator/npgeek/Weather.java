@@ -9,6 +9,15 @@ public class Weather {
 	private String forecast;
 	private String forecastImage;
 	
+	public int getFarenheightToCelsiusLow() {
+		int celsius = ((low-32)*5) /9;
+		return celsius;
+	}
+	
+	public int getFarenheightToCelsiusHigh() {
+		int celsius = ((high-32)*5) /9;
+		return celsius;
+	}
 	
 	public String getForecastImage() {
 		return forecastImage;
