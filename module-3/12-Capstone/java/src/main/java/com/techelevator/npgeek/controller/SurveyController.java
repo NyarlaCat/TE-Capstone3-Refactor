@@ -20,7 +20,7 @@ public class SurveyController {
 	}
 	
 	@RequestMapping(path = "/survey", method = RequestMethod.POST)
-	public String processSurvey(Survey survey) {
+	public String processSurvey(Survey survey ) {
 		
 		surveyDao.save(survey);
 		return "redirect:/favoritePark";
