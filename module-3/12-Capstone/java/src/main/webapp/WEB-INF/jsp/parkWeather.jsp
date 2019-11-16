@@ -53,44 +53,36 @@
 		<c:when test="${weather == 'snow' }">
 		<p>Pack snow shoes.</p>
 		</c:when>
-	</c:choose>
 	
-	<c:choose>
+	
 		<c:when test="${weather == 'rain' }">
 		<p>Pack rain gear, wear waterproof shoes. Consider bigger boats.</p>
 		</c:when>
-	</c:choose>
 	
-	<c:choose>
+	
 		<c:when test="${weather == 'thunderstorms' }">
 		<p>Seek shelter and avoid hiking on exposed ridges.</p>
 		</c:when>
-	</c:choose>
 	
-	<c:choose>
+	
 		<c:when test="${weather == 'sunny' }">
 		<p>Wear sunblock.</p>
 		</c:when>
-	</c:choose>
-
-	<c:choose>
+	
+	
 		<c:when test="${temperatureHigh > 75 }">
 		<p>Bring an extra gallon of water.</p>
 		</c:when>
-	</c:choose>
 	
-	<c:choose>
+	
 		<c:when test="${temperatureLow < 20 }">
 		<p>Be aware of dangerous conditions. For example a temperature of 0 degrees Fahrenheit and a wind speed of 15 mph creates a wind chill temperature of -19 degrees Fahrenheit. Under these conditions frost bite can occur in just 30 minutes. Extremely cold temperature can also cause hypothermia. Warning signs include uncontrollable shivering, memory loss, disorientation, incoherence, slurred speech, drowsiness, and obvious exhaustion.</p>
 		</c:when>
-	</c:choose>
 	
-	<c:choose>
 		<c:when test="${temperatureDifference > 20 }">
 		<p>Wear breathable layers.</p>
 		</c:when>
 	</c:choose>
-	
 	
 	</c:forEach>
 
