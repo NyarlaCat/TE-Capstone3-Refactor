@@ -6,7 +6,7 @@
 	<form method="GET" action="${formAction}">
 	
 <div id="main-content">
-
+<h1>${thanks }</h1>
 <h1 class="centered">Favorite Parks</h1>
 <h3 class="centered">Ranked by your survey feedback</h3>
 
