@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.npgeek.Park;
 import com.techelevator.npgeek.Survey;
@@ -32,8 +33,10 @@ public class SurveyController {
 	}
 	
 	@RequestMapping(path = "/survey", method = RequestMethod.POST)
-	public String processSurvey(Survey survey) {
+	public String processSurvey(Survey survey, RedirectAttributes flashScope) {
+		String message = "Thank you for completing our survey!";
 		surveyDao.save(survey);
+		flashScope.addFlashAttribute("thanks", message);
 		return "redirect:/favoritePark";
 	}
 
