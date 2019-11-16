@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>National Park Geek</title>
-    <c:url value="/css/style.css" var="cssHref" />
+    <c:url value="/css/bootstrap.css" var="cssHref" />
     <link rel="stylesheet" href="${cssHref}">
 </head>
 
@@ -17,11 +17,11 @@
         		<img src="${logoSrc}" alt="National Park Geek logo" />
         </a>
    </header>  
-    <nav>
+    <nav class="navbar sticky-top navbar-dark bg-primary">
         <h2>Explore National Parks</h2>
-        <ul>
-            <li><a href="home">Home</a></li>
-            <li><a href="survey">Survey</a></li>
-            <li><a href="favoritePark">Favorite Parks</a></li>
-        </ul>
+            <a class="navbar-brand" href="home">Home</a>
+            <a class="navbar-brand" href="survey">Survey</a>
+            <a class="navbar-brand" href="favoritePark">Favorite Parks</a>
     </nav>
+    
+ 
