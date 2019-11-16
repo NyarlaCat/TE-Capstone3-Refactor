@@ -13,9 +13,14 @@
     <header>
     		<c:url value="/" var="homePageHref" />
     		<c:url value="/img/logo.png" var="logoSrc" />
+    		
+   
         <a href="${homePageHref}">
-        		<img src="${logoSrc}" alt="National Park Geek logo" />
+        		<img class="logo" src="${logoSrc}" alt="National Park Geek logo"/>
         </a>
+
+        
+        
    </header>  
     <nav class="navbar sticky-top navbar-dark bg-primary">
         <h2>Explore National Parks</h2>

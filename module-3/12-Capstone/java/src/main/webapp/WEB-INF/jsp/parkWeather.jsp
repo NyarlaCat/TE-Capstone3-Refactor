@@ -5,31 +5,42 @@
 <c:url var="formAction" value="/parkWeather" />
 <form method="POST" action="${formAction}">
 	
-<div id="main-content">
-<div class="centered">
-<h1>${weatherPark.parkName }</h1>
+
+
+<div class="weatherPage">
+	<h1 class="weatherName">${weatherPark.parkName }</h1>
+
 	<c:url value="/img/parks/${weatherPark.imgCode }.jpg" var="parkImg" ></c:url>
 	
-	<img src="${parkImg}" alt="Photo of ${weatherPark.parkName }" />
+	<input id="weatherConvert" class="btn btn-primary" type="submit" value="Convert Temperature"/>
+
+	<img  class="weatherPhoto" src="${parkImg}" alt="Photo of ${weatherPark.parkName }" />
 	
 	<input type="hidden" name="id" value="${weatherPark.parkCode}" />
 	
-	<input type="submit" value="Convert Temperature"/>
 	
- 	
+</div>
+	
+	
+	
 
 	
+	
+<div class="container">
+<div class="d-flex justify-content-between">
+
 	<c:forEach items="${weather}" var="dailyWeather">
+	
+	<div class="p-2">
+	<c:url value="/img/weather/${dailyWeather.forecastImage }.png" var="weatherImg" ></c:url>
+	<img  src="${weatherImg}" alt="Clipart image of ${dailyWeather.forecastImage }" />
+	
 	<c:choose>
 		<c:when test="${dailyWeather.fiveDayForecastValue == 1 }">
 		<h1>TODAY</h1>
 		</c:when>
-	
 	</c:choose>
-	
-	<c:url value="/img/weather/${dailyWeather.forecastImage }.png" var="weatherImg" ></c:url>
-	<img src="${weatherImg}" alt="Clipart image of ${dailyWeather.forecastImage }" />
-	
+
 	<c:choose>
 	<c:when test="${Temperature == 'C' }" >
 		<h2>Low: ${dailyWeather.farenheightToCelsiusLow} ${Temperature}</h2>
@@ -40,8 +51,8 @@
 		<h2>High: ${dailyWeather.high} F</h2>
 	</c:when>
 	</c:choose>
-	
-	
+
+
 	<h2>Forecast: ${dailyWeather.forecast }</h2>
 	
 	<c:set var="weather" value="${dailyWeather.forecast}"></c:set>
@@ -83,11 +94,11 @@
 		<p>Wear breathable layers.</p>
 		</c:when>
 	</c:choose>
-	
+	</div>
 	</c:forEach>
-
+</div>
 </div>
 
-</div>
+
 </form>
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
