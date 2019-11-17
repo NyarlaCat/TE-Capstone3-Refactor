@@ -7,7 +7,7 @@
 <div id="main-content">
 <div class="card-columns">
 	<c:forEach items="${parks}" var="park">
-	<div class="card">
+	<div class="card shadow">
 	<div class="card-body">
         <h2 class="card-text">${park.parkName }</h2>
         
@@ -16,7 +16,7 @@
     	<c:url value="/img/parks/${park.imgCode }.jpg" var="parkImg" />
     	
         <a href="${linkHref}">
-        <img id="imgWidth" src="${parkImg}" alt="Photo of ${park.parkName }" />
+        <img class="shadow" id="imgWidth" src="${parkImg}" alt="Photo of ${park.parkName }" />
         </a>
         
         <h4 class="card-text">${park.state }</h4>

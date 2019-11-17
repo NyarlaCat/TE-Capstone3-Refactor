@@ -23,7 +23,7 @@
 
 
 <c:forEach items="${weather}" var="dailyWeather">
-<div class="d-flex justify-content-start">
+<div class="d-flex justify-content-start weatherCard shadow">
 	
 	<div class="p-2">
 		<c:choose>
@@ -67,32 +67,32 @@
 		</c:when>
 		
 		<c:when test="${weather == 'snow' }">
-		<p>Pack snow shoes.</p>
+		<h3>Pack snow shoes.</h3>
 		</c:when>
 	
 	
 		<c:when test="${weather == 'rain' }">
-		<p>Pack rain gear, wear waterproof shoes. Consider bigger boats.</p>
+		<h3>Pack rain gear, wear waterproof shoes.</h3>
 		</c:when>
 	
 	
 		<c:when test="${weather == 'thunderstorms' }">
-		<p>Seek shelter and avoid hiking on exposed ridges.</p>
+		<h4>Seek shelter and avoid hiking on exposed ridges.</h4>
 		</c:when>
 	
 	
 		<c:when test="${weather == 'sunny' }">
-		<p>Wear sunblock.</p>
+		<h3>Wear sunblock.</h3>
 		</c:when>
 	
 	
 		<c:when test="${temperatureHigh > 75 }">
-		<p>Bring an extra gallon of water.</p>
+		<h3>Bring an extra gallon of water.</h3>
 		</c:when>
 
 	
 		<c:when test="${temperatureDifference > 20 }">
-		<p>Wear breathable layers.</p>
+		<h3>Wear breathable layers.</h3>
 		</c:when>	
 	</c:choose>
 </div>
