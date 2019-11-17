@@ -7,9 +7,9 @@
 	<c:url var="formAction" value="/survey" />
 	<form method="POST" action="${formAction}">
 	
-	<div class="form-inline">
+	<div class="form-group"">
 		<div>
-			<label class="sr-only" for="parkCode">What is your favorite park?</label>
+			<label for="parkCode">What is your favorite park?</label>
 			<select class="custom-select" name="parkCode">
 				<c:forEach items="${surveyPark}" var="park">
 				<option value="${park.parkCode }">${park.parkName }</option>
@@ -18,7 +18,7 @@
 		</div>
 		
 		<div>
-			<label class="sr-only" for="activityLevel">What is your activity level?</label>
+			<label  for="activityLevel">What is your activity level?</label>
 			<select class="custom-select" name="activityLevel">
 				<option value="inactive">Inactive</option>
 				<option value="sedentary">Sedentary</option>
@@ -26,12 +26,13 @@
 				<option value="xtreme activ">Extremely Active</option>
 			</select>
 		</div>
+		
+		<div>
+			<label for="email">Email Address:</label> 
+			<input class="form-control" type="text" name="email"/>
+		</div>
 	</div>
 	
-		<div>
-		<label for="email">Email Address:</label> 
-		<input  class="form-control" type="text" name="email"/>
-		</div>
 		
 	<div>
 		<label for="state">State of Residence:</label> 
