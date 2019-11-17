@@ -6,7 +6,7 @@
 	<form method="GET" action="${formAction}">
 	
 
-<div class="sucess">
+<div class="bg-success text-white text-center">
 	<h1>${thanks }</h1>
 </div>
 

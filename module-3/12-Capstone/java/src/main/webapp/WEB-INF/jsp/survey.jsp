@@ -12,7 +12,7 @@
 	<div class="form-group">
 		<form:label path="email">Email</form:label>
 		<form:input path="email" class="form-control"/>
-		<form:errors path="email" cssClass="error"/>
+		<form:errors path="email"  class="badge badge-danger"/>
 	</div>
 	
 	<div class="form-group">
@@ -91,7 +91,7 @@
 		</select>
 	</div>
 
-	<input type="submit" value="Register" class="btn btn-primary"/>
+	<input type="submit" value="Submit" class="btn btn-primary"/>
 </div>	
 </form:form>
 <%@include file="common/footer.jsp" %>

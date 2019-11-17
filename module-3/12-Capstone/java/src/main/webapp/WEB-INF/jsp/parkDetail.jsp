@@ -14,14 +14,14 @@
 		</div>
 	
 		<div class="d-flex justify-content-around">
-	
+		
 		<div class="p-2">
 		<c:url value="/img/parks/${parkDetail.imgCode }.jpg" var="parkImg" ></c:url>
-		<img src="${parkImg}" alt="Photo of ${parkDetail.parkName }" />
+		<img class= "rounded-lg" src="${parkImg}" alt="Photo of ${parkDetail.parkName }" />
 		</div>
 		
 		<div class="p-2">
-			<blockquote class="blockquote  weatherCard">
+			<blockquote class="blockquote weatherCard text-center shadow">
 			<p class="mb-0">"${parkDetail.inspirationalQuote }"</p>
 			<footer class="blockquote-footer">
 			 <cite title="Source Title"> ${parkDetail.inspirationalQuoteSource }</cite>
