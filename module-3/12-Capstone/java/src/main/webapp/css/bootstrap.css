@@ -7246,6 +7246,10 @@ button.bg-dark:focus {
     margin: 10px;
 }
 
+.inline {
+	display: inline-flex;
+}
+
 
 @media (min-width: 576px) {
   .flex-sm-row {
