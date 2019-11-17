@@ -209,6 +209,15 @@ img {
   border-style: none;
 }
 
+#imgWidth{
+	 width: 100%;
+}
+
+#flexCent{
+	justify-self: flex-start;
+	align-self: center;
+}
+
 svg {
   overflow: hidden;
   vertical-align: middle;
@@ -527,8 +536,8 @@ mark,
 }
 
 .survey {
-	padding-left: 625px;
-	padding-right: 625px;
+	padding-left: 250px;
+	padding-right: 250px;
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
@@ -566,8 +575,8 @@ mark,
 }
 
 .main {
-	padding-left: 625px;
-	padding-right: 625px;
+	padding-left: 250px;
+	padding-right: 250px;
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
@@ -1966,6 +1975,9 @@ pre code {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+#changeFontColor{
+	color: #828CA1;
+}
 @media (prefers-reduced-motion: reduce) {
   .form-control {
     transition: none;

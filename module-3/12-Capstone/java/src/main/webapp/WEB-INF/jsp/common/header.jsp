@@ -23,10 +23,10 @@
         
    </header>  
     <nav class="navbar sticky-top navbar-dark bg-primary">
-        <h2>Explore National Parks</h2>
-            <a class="navbar-brand" href="home">Home</a>
-            <a class="navbar-brand" href="survey">Survey</a>
-            <a class="navbar-brand" href="favoritePark">Favorite Parks</a>
+        <h1 id="changeFontColor" >Explore National Parks</h1>
+            <a  class="navbar-brand btn btn-primary" href="home">Home</a>
+            <a  class="navbar-brand btn btn-primary" href="survey">Survey</a>
+            <a 	class="navbar-brand btn btn-primary" href="favoritePark">Favorite Parks</a>
     </nav>
     
  

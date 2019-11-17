@@ -29,8 +29,11 @@
 			</blockquote>
 		</div>
 		
+		
 		<div class="p-2">
-		<input class="btn btn-primary" type="button" onclick="window.location.href = 'parkWeather?id=${parkDetail.parkCode }';" value="5-Day Weather Forecast"/>
+		
+		<input class="shadow-lg p-3 rounded btn btn-primary" type="button" onclick="window.location.href = 'parkWeather?id=${parkDetail.parkCode }';" value="5-Day Weather Forecast"/>
+	
 		</div>
 		
 		</div>
