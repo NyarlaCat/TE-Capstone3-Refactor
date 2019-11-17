@@ -2,37 +2,42 @@
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
-<div id="main-content">
+<div class="survey">
+
 	<c:url var="formAction" value="/survey" />
 	<form method="POST" action="${formAction}">
 	
-		<div class="formInputGroup">
-			<label for="parkCode">What is your favorite park?</label>
-			<select name="parkCode">
+	<div class="form-inline">
+		<div>
+			<label class="sr-only" for="parkCode">What is your favorite park?</label>
+			<select class="custom-select" name="parkCode">
 				<c:forEach items="${surveyPark}" var="park">
 				<option value="${park.parkCode }">${park.parkName }</option>
 				</c:forEach>
 			</select>
 		</div>
 		
-		<div class="formInputGroup">
-			<label for="activityLevel">What is your activity level?</label>
-			<select name="activityLevel">
+		<div>
+			<label class="sr-only" for="activityLevel">What is your activity level?</label>
+			<select class="custom-select" name="activityLevel">
 				<option value="inactive">Inactive</option>
 				<option value="sedentary">Sedentary</option>
 				<option value="active">Active</option>
 				<option value="xtreme activ">Extremely Active</option>
 			</select>
 		</div>
-		
-		<div class="formInputGroup">
+	</div>
+	
+		<div>
 		<label for="email">Email Address:</label> 
-		<input type="text" name="email"/>
+		<input  class="form-control" type="text" name="email"/>
 		</div>
 	
-		<div class="formInputGroup">
+	
+
+	<div>
 		<label for="state">State of Residence:</label> 
-		<select name="state">
+		<select name="state" class="custom-select">
 			<option value="AL">Alabama</option>
 			<option value="AK">Alaska</option>
 			<option value="AZ">Arizona</option>
@@ -88,7 +93,7 @@
 	</div>
 	
 	<div>
-	<input type="submit" value="Submit" />
+	<input type="submit" value="Submit" class="btn btn-primary mb-2"/>
 	</div>
 	
 	
