@@ -25,12 +25,12 @@
 		<c:url value="parkDetail?id=${fav.parkCode }" var="linkHref" />
 		<c:url value="/img/parks/${fav.imgCode }.jpg" var="parkImg" />
         
-        <a href="parkDetail?id=${fav.parkCode }">
+      
 		<img class="card-img" src="${parkImg}" alt="Photo of ${fav.parkName }" />
-		</a>
 		
 		<div class="card-img-overlay">
 		<div class="cardLabel">
+		
 		
 		<h2 class="card-text">${fav.parkName }</h2>
 		<h2 class="card-text">Vote Count: ${fav.count }</h2>
