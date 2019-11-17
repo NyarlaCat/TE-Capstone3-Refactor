@@ -13,10 +13,10 @@
         
      	<c:url value="parkDetail?id=${park.parkCode }" var="linkHref" />
      	
-    		<c:url value="/img/parks/${park.imgCode }.jpg" var="parkImg" />
+    	<c:url value="/img/parks/${park.imgCode }.jpg" var="parkImg" />
+    	
         <a href="${linkHref}">
-        
-        		<img src="${parkImg}" alt="Photo of ${park.parkName }" />
+        <img src="${parkImg}" alt="Photo of ${park.parkName }" />
         </a>
         
         <h4 class="card-text">${park.state }</h4>
