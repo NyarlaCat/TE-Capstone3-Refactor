@@ -32,9 +32,7 @@
 		<label for="email">Email Address:</label> 
 		<input  class="form-control" type="text" name="email"/>
 		</div>
-	
-	
-
+		
 	<div>
 		<label for="state">State of Residence:</label> 
 		<select name="state" class="custom-select">

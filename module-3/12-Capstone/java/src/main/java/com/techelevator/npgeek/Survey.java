@@ -4,7 +4,9 @@ public class Survey {
 
 	private long id;
 	private String parkCode;
+	
 	private String email;
+	
 	private String state;
 	private String activityLevel;
 	
