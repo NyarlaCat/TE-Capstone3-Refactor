@@ -1,44 +1,50 @@
 package com.techelevator.npgeek;
 
-public class Survey {
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
-	private long id;
-	private String parkCode;
-	
+public class Survey {
+	@NotBlank(message="Email is required")
+	@Email(message="Must be a valid email")
 	private String email;
-	
 	private String state;
+	private String parkCode;
 	private String activityLevel;
+	private long id;
 	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getParkCode() {
-		return parkCode;
-	}
-	public void setParkCode(String parkCode) {
-		this.parkCode = parkCode;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getState() {
 		return state;
 	}
 	public void setState(String state) {
 		this.state = state;
 	}
+
 	public String getActivityLevel() {
 		return activityLevel;
 	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public void setActivityLevel(String activityLevel) {
 		this.activityLevel = activityLevel;
+	}
+	
+	
+	public String getParkCode() {
+		return parkCode;
+	}
+	public void setParkCode(String parkCode) {
+		this.parkCode = parkCode;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

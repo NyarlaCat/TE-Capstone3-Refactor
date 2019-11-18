@@ -23,35 +23,39 @@ public class SurveyController {
 
 	@Autowired
 	private SurveyDao surveyDao;
-	
+
 	@Autowired
 	private ParkDao parkDao;
-	
-	@RequestMapping("/survey")
-	public String displaySurvey( ModelMap modelMap ) {
+
+	@RequestMapping(path = "/survey", method = RequestMethod.GET)
+	public String showsurveyForm(ModelMap modelMap) {
 
 		List<Park> park = parkDao.getAllParks();
-		modelMap.put("surveyPark", park);
-		return "survey";
-		
-	}
-	
-	@RequestMapping(path = "/survey", method = RequestMethod.POST)
-	public String processSurvey(@Valid @ModelAttribute("survey") Survey survey, BindingResult result, RedirectAttributes flashScope) {
-		String message = "";
-		
-		Survey newSurvey = surveyDao.save(survey);
-		
-		if (newSurvey.getEmail() == null || survey.getEmail().equals("")) {
-			message = "Surveys without emails are not processed.";
-		} else if (newSurvey.getEmail() != null) {
-			message = "Thank you for completing our survey!";
+		modelMap.put("surveyParks", park);
+
+		if (!modelMap.containsAttribute("survey")) {
+			modelMap.addAttribute("survey", new Survey());
 		}
-		
-		
-		flashScope.addFlashAttribute("thanks", message);
-		return "redirect:/favoritePark";
+
+		return "survey";
 	}
 
-	
+	@RequestMapping(path = "/survey", method = RequestMethod.POST)
+	public String submitsurveyForm(@Valid @ModelAttribute("survey") Survey survey, BindingResult result,
+			RedirectAttributes flashScope) {
+
+		if (result.hasErrors()) {
+			flashScope.addFlashAttribute("survey", survey);
+			flashScope.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "survey", result);
+
+			return "redirect:/survey";
+		}
+		Survey newSurvey = surveyDao.save(survey);
+
+		String message = "Thank you for completing our survey!";
+
+		flashScope.addFlashAttribute("thanks", message);
+
+		return "redirect:/favoritePark";
+	}
 }

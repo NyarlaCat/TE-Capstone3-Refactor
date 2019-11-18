@@ -1,41 +1,41 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<c:import url="/WEB-INF/jsp/common/header.jsp" />
+<c:set var="pageTitle" value="Register"/>
+<%@include file="common/header.jsp" %>
+
+<c:url value="/survey" var="url"/>
+<form:form action="${url}" method="POST" modelAttribute="survey">
+
 
 <div class="survey">
-
-	<c:url var="formAction" value="/survey" />
-	<form method="POST" action="${formAction}">
-	
-	<div class="form-group"">
-		<div>
-			<label for="parkCode">What is your favorite park?</label>
-			<select class="custom-select" name="parkCode">
-				<c:forEach items="${surveyPark}" var="park">
-				<option value="${park.parkCode }">${park.parkName }</option>
-				</c:forEach>
-			</select>
-		</div>
-		
-		<div>
-			<label  for="activityLevel">What is your activity level?</label>
-			<select class="custom-select" name="activityLevel">
-				<option value="inactive">Inactive</option>
-				<option value="sedentary">Sedentary</option>
-				<option value="active">Active</option>
-				<option value="xtreme activ">Extremely Active</option>
-			</select>
-		</div>
-		
-		<div>
-			<label for="email">Email Address:</label> 
-			<input class="form-control" type="text" name="email"/>
-		</div>
+	<div class="form-group">
+		<form:label path="email">Email</form:label>
+		<form:input path="email" class="form-control"/>
+		<form:errors path="email"  class="badge badge-danger"/>
 	</div>
 	
-		
+	<div class="form-group">
+		<form:label path="parkCode">What is your favorite park?</form:label>
+		<select class="custom-select" name="parkCode">
+			<c:forEach items="${surveyParks}" var="park">				
+			<option value="${park.parkCode }">${park.parkName }</option>
+			</c:forEach>
+		</select>
+	</div>
+	
+	<div class="form-group">
+		<label  path="activityLevel">What is your activity level?</label>
+		<select class="custom-select" name="activityLevel">
+			<option value="inactive">Inactive</option>
+			<option value="sedentary">Sedentary</option>
+			<option value="active">Active</option>
+			<option value="xtreme activ">Extremely Active</option>
+		</select>
+	</div>
+	
 	<div>
-		<label for="state">State of Residence:</label> 
+		<label path="state">State of Residence:</label> 
 		<select name="state" class="custom-select">
 			<option value="AL">Alabama</option>
 			<option value="AK">Alaska</option>
@@ -90,13 +90,8 @@
 			<option value="WY">Wyoming</option>
 		</select>
 	</div>
-	
-	<div>
-	<input type="submit" value="Submit" class="btn btn-primary mb-2"/>
-	</div>
-	
-	
 
-	</form>
-</div>
-<c:import url="/WEB-INF/jsp/common/footer.jsp" />
+	<input type="submit" value="Submit" class="btn btn-primary"/>
+</div>	
+</form:form>
+<%@include file="common/footer.jsp" %>
