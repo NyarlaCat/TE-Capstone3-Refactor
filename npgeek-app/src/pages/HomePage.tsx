@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import type { Park } from '../types/park';
+import ParkCard from '../components/ParkCard';
 
 export default function HomePage() {
   const [parks, setParks] = useState<Park[]>([]);
@@ -24,16 +24,9 @@ export default function HomePage() {
   return (
     <main>
       <h1>National Parks</h1>
-      <ul>
         {parks.map((park) => (
-          <li key={park.parkCode}>
-            <img src={`/parks/${park.imgCode}.jpg`} alt={`Photo of ${park.parkName}`} />
-            <Link to={`/parks/${park.parkCode}`}>
-              <strong>{park.parkName}</strong> — {park.state}
-            </Link>
-          </li>
+          <ParkCard key={park.parkCode} park={park} />
         ))}
-      </ul>
     </main>
   );
 }
