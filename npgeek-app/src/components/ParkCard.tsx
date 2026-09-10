@@ -9,17 +9,17 @@ import { Stack } from '@mui/material';
 
 export default function ParkCard({ park }: { park: Park }) {
     return (
-        <Card sx={{ display: 'flex'}}>
+        <Card sx={{backgroundColor: '#D0DBCC', display: 'flex', padding: '8px', flexDirection: { md: 'row', xs: 'column'}}}>
             <CardMedia>
-                <img src={`/parks/${park.imgCode}.jpg`} alt={`Photo of ${park.parkName}`} />
+                <img src={`/parks/${park.imgCode}.jpg`} alt={`Photo of ${park.parkName}`} style={{width: 'stretch'}} />
             </CardMedia>
-            <Stack direction='column' spacing={2}>
+            <Stack spacing={2} useFlexGap sx={{justifyContent: 'space-between', alignItems: 'center'}}>
             <CardContent>
-                <Typography variant='h1' sx={{fontSize: '2rem', color: '#000000'}} >{park.parkName}</Typography>
+                <Typography variant='h1' sx={{fontSize: '2rem', color: '#401502', justifySelf: 'center'}} >{park.parkName}</Typography>
                 <Typography variant='body1' sx={{fontSize: '1rem'}}>{park.parkDescription}</Typography>
             </CardContent>
             <CardActions>
-                <Button size='small' href={`/parkDetail?id=${park.parkCode}`}>Learn More</Button>
+                <Button size='small' href={`/parkDetail?id=${park.parkCode}`} sx={{color: '#064360'}}>Learn More</Button>
             </CardActions>
             </Stack>
         </Card>
