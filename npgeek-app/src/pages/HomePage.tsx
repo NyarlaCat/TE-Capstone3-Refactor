@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { Park } from '../types/park';
 import ParkCard from '../components/ParkCard';
-import { Stack } from '@mui/material';
+import { Skeleton, Stack } from '@mui/material';
 
 export default function HomePage() {
   const [parks, setParks] = useState<Park[]>([]);
@@ -19,16 +19,19 @@ export default function HomePage() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p>Loading parks…</p>;
+
   if (error) return <p>Error loading parks: {error}</p>;
 
   return (
     <main style={{width: '80%', margin: '0 auto'}} >
-      <Stack spacing={2} sx={{alignItems: 'center'}}>
+      {loading ? (
+        <Skeleton variant="rectangular" width='300px' height='500px' sx={{ backgroundColor: '#D0DBCC', borderRadius: '8px' }} />
+      ) : (
+      <Stack spacing={2} sx={{ alignItems: 'center' }}>
         {parks.map((park) => (
           <ParkCard key={park.parkCode} park={park} />
         ))}
-        </Stack>
+      </Stack>)}
     </main>
   );
 }
