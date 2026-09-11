@@ -1,4 +1,9 @@
+/**
+ * The Park interface represents the structure of a park object as 
+ * returned from the `/api/parks` endpoint.
+ */
 export interface Park {
+  /** The unique code identifying the park */
   parkCode: string;
   parkName: string;
   state: string;
@@ -14,5 +19,6 @@ export interface Park {
   parkDescription: string;
   entryFee: number;
   numberOfAnimalSpecies: number;
+  /** The code used to reference the park's image path */
   imgCode: string;
 }
