@@ -9,6 +9,7 @@ export default function Header() {
             <Box sx={{ padding: '4px 0px' }}>
                 <Link href="/" sx={{ color: colors.darkBlue, fontSize: '1.5rem', margin: '0 .75rem 0 16px' }} underline="hover"> Home </Link>
                 <Link href="/survey" sx={{ color: colors.darkBlue, fontSize: '1.5rem', margin: '0 .75rem' }} underline="hover" > Survey </Link>
+                {/* TODO: Whenever there are favorite parks present show a link to that page here */}
             </Box>
         </Box>
     )
