@@ -15,15 +15,21 @@ export default function HomePage() {
   if (error) return <p>Error loading parks: {error}</p>;
 
   return (
-    <main style={{width: '80%', margin: '0 auto'}} >
-      {loading ? (
-        <Skeleton variant="rectangular" width='300px' height='500px' sx={{ backgroundColor: '#D0DBCC', borderRadius: '8px' }} />
-      ) : (
+    <main style={{ width: '80%', margin: '0 auto' }} >
       <Stack spacing={2} sx={{ alignItems: 'center' }}>
-        {parks.map((park) => (
-          <ParkCard key={park.parkCode} park={park} />
-        ))}
-      </Stack>)}
+        {isLoading ? (
+          <>
+            <Skeleton variant="rectangular" width='100%' height='350px' sx={{ backgroundColor: '#D0DBCC', borderRadius: '8px' }} />
+            <Skeleton variant="rectangular" width='100%' height='350px' sx={{ backgroundColor: '#D0DBCC', borderRadius: '8px' }} />
+          </>
+        ) : (
+          parks.map((park) => (
+            <ParkCard key={park.parkCode} park={park} />
+          ))
+        )
+        }
+      </Stack>
+
     </main>
   );
 }
