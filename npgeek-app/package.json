@@ -2,13 +2,14 @@
   "name": "npgeek-app",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "node ./scripts/test.cjs --no-watch",
-    "test:watch": "node ./scripts/test.cjs --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
