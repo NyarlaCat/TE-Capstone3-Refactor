@@ -10,6 +10,7 @@ A full-stack Spring MVC web application displaying information about U.S. Nation
 - [Running the Application](#running-the-application)
 - [Database Reset](#database-reset)
 - [Architecture Overview](#architecture-overview)
+- [Testing](#testing)
 
 ---
 
@@ -194,4 +195,25 @@ PGPASSWORD=postgres1 psql -h localhost -d npgeek -U postgres -c "SELECT COUNT(*)
 │                    localhost:5432/npgeek                    │
 │           Tables: park, weather, survey_result              │
 └─────────────────────────────────────────────────────────────┘
+```
+
+## Testing
+### Frontend
+This project uses React Testing Library to test front end code. Make sure to save test files in directories called `tests` and that the test file name is `ComponentName.test.tsx` or `correspondingFileName.test.ts`. It must contain `test` before the file extension.
+
+### Running tests
+From within npgeek-app directory run:
+
+```bash
+# To run all tests
+npm run test
+
+# To run one test
+npm run test FileName.test.tsx
+
+# To run all tests with headed test runner that will auto run on save
+npm run test:watch
+
+# To run one tests with headed test runner that will auto run on save
+npm run test:watch FileName.test.tsx
 ```
