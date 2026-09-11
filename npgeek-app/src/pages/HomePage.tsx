@@ -1,24 +1,16 @@
-import { useEffect, useState } from 'react';
-import type { Park } from '../types/park';
+import { useEffect } from 'react';
 import ParkCard from '../components/ParkCard';
 import { Skeleton, Stack } from '@mui/material';
+import { useGetParks } from '../hooks/useGetParks';
 
 export default function HomePage() {
-  const [parks, setParks] = useState<Park[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { parks, loading: isLoading, error } = useGetParks('HomePage');
 
   useEffect(() => {
-    fetch('/api/parks')
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json() as Promise<Park[]>;
-      })
-      .then(setParks)
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
-
+    if (error) {
+      console.error(error);
+    }
+  }, [error]);
 
   if (error) return <p>Error loading parks: {error}</p>;
 
