@@ -17,7 +17,7 @@ export default function HomePage() {
 
   return (
     <main style={{ width: '80%', margin: '0 auto' }} >
-      <Stack spacing={2} sx={{ alignItems: 'center' }}>
+      <Stack spacing={2} sx={{ alignItems: 'center', marginTop: '16px' }} >
         {isLoading ? (
           <>
             <Skeleton variant="rectangular" width='100%' height='350px' sx={{ backgroundColor: colors.mediumGreen, borderRadius: '8px' }} />
@@ -30,7 +30,6 @@ export default function HomePage() {
         )
         }
       </Stack>
-
     </main>
   );
 }
