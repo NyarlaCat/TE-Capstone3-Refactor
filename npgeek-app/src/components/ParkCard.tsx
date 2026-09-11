@@ -10,7 +10,7 @@ import { colors } from '../../designTokens/colors';
 
 export default function ParkCard({ park }: { park: Park }) {
     return (
-        <Card sx={{ backgroundColor: colors.mediumGreen, display: 'flex', padding: '8px', flexDirection: { md: 'row', xs: 'column' }, width: '100%' }}>
+        <Card data-testid="park-card" sx={{ backgroundColor: colors.mediumGreen, display: 'flex', padding: '8px', flexDirection: { md: 'row', xs: 'column' }, width: '100%' }}>
             <CardMedia>
                 <img src={`/parks/${park.imgCode}.jpg`} alt={`Photo of ${park.parkName}`} style={{ width: 'stretch' }} />
             </CardMedia>
