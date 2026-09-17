@@ -19,12 +19,50 @@ export default function ParkDetailPage() {
 
     return (
         <Box>
-
-            <Typography variant="h4" component="span">
-                Park Detail Page
+            <Typography>
+                Park name: {parkDetail && parkDetail.parkName}
+            </Typography>
+            {parkDetail &&
+                <img src={`/parks/${parkDetail.imgCode}.jpg`} alt={`Photo of ${parkDetail.parkName}`} style={{ width: 'stretch' }} />
+            }
+            <Typography>
+                Inspirational Quote: {parkDetail && parkDetail.inspirationalQuote}
             </Typography>
             <Typography>
-                {parkDetail && parkDetail.parkName}
+                Inspirational Quote Source: {parkDetail && parkDetail.inspirationalQuoteSource}
+            </Typography>
+            <Typography>
+                State: {parkDetail && parkDetail.state}
+            </Typography>
+            <Typography>
+                Park Description: {parkDetail && parkDetail.parkDescription}
+            </Typography>
+            <Typography>
+                Acreage: {parkDetail && parkDetail.acreage}
+            </Typography>
+            <Typography>
+                Elevation (ft): {parkDetail && parkDetail.elevationInFeet}
+            </Typography>
+            <Typography>
+                Miles of Trail: {parkDetail && parkDetail.milesOfTrail}
+            </Typography>
+            <Typography>
+                Number of Campsites: {parkDetail && parkDetail.numberOfCampsites}
+            </Typography>
+            <Typography>
+                Climate: {parkDetail && parkDetail.climate}
+            </Typography>
+            <Typography>
+                Year Founded: {parkDetail && parkDetail.yearFounded}
+            </Typography>
+            <Typography>
+                Annual Visitor Count: {parkDetail && parkDetail.annualVisitorCount}
+            </Typography>
+            <Typography>
+                Entry Fee: {parkDetail && parkDetail.entryFee}
+            </Typography>
+            <Typography>
+                Number of Animal Species: {parkDetail && parkDetail.numberOfAnimalSpecies}
             </Typography>
         </Box>
     )
