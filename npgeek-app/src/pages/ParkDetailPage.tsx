@@ -2,7 +2,8 @@ import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import type { Park } from '../types/park';
-import { Box } from '@mui/material';
+import { Box, Card, CardContent, CardHeader, CardMedia } from '@mui/material';
+import { colors } from '../../designTokens/colors';
 
 export default function ParkDetailPage() {
     const [searchParams] = useSearchParams();
@@ -19,18 +20,27 @@ export default function ParkDetailPage() {
 
     return (
         <Box>
-            <Typography>
-                Park name: {parkDetail && parkDetail.parkName}
-            </Typography>
-            {parkDetail &&
-                <img src={`/parks/${parkDetail.imgCode}.jpg`} alt={`Photo of ${parkDetail.parkName}`} style={{ width: 'stretch' }} />
-            }
-            <Typography>
-                Inspirational Quote: {parkDetail && parkDetail.inspirationalQuote}
-            </Typography>
-            <Typography>
-                Inspirational Quote Source: {parkDetail && parkDetail.inspirationalQuoteSource}
-            </Typography>
+            <Card sx={{ backgroundColor: colors.mediumGreen, padding: '8px', display: 'flex', flexDirection: 'column', width: '50%', margin: '32px auto', alignItems: 'center' }}>
+                <CardHeader
+                    title={parkDetail?.parkName}
+                    variant='h1'
+                />
+                {parkDetail &&
+                    <CardMedia >
+                        <img src={`/parks/${parkDetail.imgCode}.jpg`} alt={`Photo of ${parkDetail.parkName}`} />
+                    </CardMedia>
+                }
+                <CardContent>
+                    <Typography variant='subtitle1' sx={{ fontStyle: 'italic' }}>
+                        {parkDetail && parkDetail.inspirationalQuote}
+                    </Typography>
+                    <Typography variant='subtitle2'>
+                        {parkDetail && `~ ${parkDetail.inspirationalQuoteSource}`}
+                    </Typography>
+
+                </CardContent>
+            </Card>
+
             <Typography>
                 State: {parkDetail && parkDetail.state}
             </Typography>
