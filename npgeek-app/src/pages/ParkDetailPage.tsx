@@ -53,52 +53,52 @@ export default function ParkDetailPage() {
                     <Button sx={{ position: 'relative', bottom: '-1.75rem', fontSize: '0.75rem' }} variant='contained' onClick={handleConvertUnitsClick}>Convert units </Button>
                     <Divider sx={{ width: '100%', margin: '16px 0px' }} />
                     <Grid container spacing={2} sx={{ marginTop: '0.5rem' }} >
-                        <Grid sx={{ fontSize: '1rem' }} >
+                        <Grid size={6}>
                             <Typography >
                                 <b>State: </b>{parkDetail && parkDetail.state}
                             </Typography>
                         </Grid>
-                        <Grid sx={{ fontSize: '1rem' }}>
+                        <Grid size={6}>
                             <Typography>
                                 <b>Area: </b>{isImperial ? parkDetail?.acreage : convertAcresToHectares(parkDetail?.acreage || 0)}{isImperial ? ' Acres' : ' Hectares'}
                             </Typography>
                         </Grid>
-                        <Grid>
+                        <Grid size={6}>
                             <Typography>
                                 <b>Elevation: </b>{isImperial ? parkDetail?.elevationInFeet : convertFeetToMeters(parkDetail?.elevationInFeet || 0)}{isImperial ? ' Feet' : '  Meters'}
                             </Typography>
                         </Grid>
-                        <Grid>
+                        <Grid size={6}>
                             <Typography>
                                 <b>{isImperial ? ' Miles' : '  Kilometers'} of Trail: </b>{isImperial ? parkDetail?.milesOfTrail : convertMilesToKilometers(parkDetail?.milesOfTrail || 0)}
                             </Typography>
                         </Grid>
-                        <Grid>
+                        <Grid size={6}>
                             <Typography>
                                 <b>Number of Campsites: </b>{parkDetail && parkDetail.numberOfCampsites}
                             </Typography>
                         </Grid>
-                        <Grid>
+                        <Grid size={6}>
                             <Typography>
                                 <b>Climate: </b>{parkDetail && parkDetail.climate}
                             </Typography>
                         </Grid>
-                        <Grid>
+                        <Grid size={6}>
                             <Typography>
                                 <b>Year Founded: </b>{parkDetail && parkDetail.yearFounded}
                             </Typography>
                         </Grid>
-                        <Grid>
+                        <Grid size={6}>
                             <Typography>
                                 <b>Annual Visitor Count: </b>{parkDetail && parkDetail.annualVisitorCount}
                             </Typography>
                         </Grid>
-                        <Grid>
+                        <Grid size={6}>
                             <Typography>
                                 <b>Entry Fee (USD): </b>${parkDetail && parkDetail.entryFee}
                             </Typography>
                         </Grid>
-                        <Grid>
+                        <Grid size={6}>
                             <Typography>
                                 <b>Number of Animal Species: </b>{parkDetail && parkDetail.numberOfAnimalSpecies}
                             </Typography>
