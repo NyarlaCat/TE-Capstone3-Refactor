@@ -4,10 +4,12 @@ import { useSearchParams } from 'react-router-dom';
 import type { Park } from '../types/park';
 import { Box, Button, Card, CardContent, CardHeader, CardMedia, Divider, Grid } from '@mui/material';
 import { colors } from '../../designTokens/colors';
+import { convertAcresToHectares, convertFeetToMeters, convertMilesToKilometers } from '../utils/unit-conversion-utils';
 
 export default function ParkDetailPage() {
     const [searchParams] = useSearchParams();
     const [parkDetail, setParkDetail] = useState<Park>();
+    const [isImperial, setIsImperial] = useState<boolean>(true)
 
     useEffect(() => {
         fetch(`/api/parkDetail?id=${searchParams.get('id')}`)
@@ -16,6 +18,14 @@ export default function ParkDetailPage() {
                 return res.json() as Promise<Park>;
             }).then(setParkDetail).catch((err) => console.error(err.message))
     }, []);
+
+    const handleClick = () => {
+        if (isImperial) {
+            setIsImperial(false)
+        } else {
+            setIsImperial(true)
+        }
+    }
 
     return (
         <Box sx={{ margin: '1rem' }}>
@@ -40,7 +50,7 @@ export default function ParkDetailPage() {
                     <Typography component='p' sx={{ fontSize: '1rem' }}>
                         {parkDetail && parkDetail.parkDescription}
                     </Typography>
-                    <Button sx={{ position: 'relative', bottom: '-1.75rem', fontSize: '0.75rem' }} variant='contained'>Convert units </Button>
+                    <Button sx={{ position: 'relative', bottom: '-1.75rem', fontSize: '0.75rem' }} variant='contained' onClick={handleClick}>Convert units </Button>
                     <Divider sx={{ width: '100%', margin: '16px 0px' }} />
                     <Grid container spacing={2} sx={{ marginTop: '0.5rem' }} >
                         <Grid sx={{ fontSize: '1rem' }} >
@@ -50,17 +60,17 @@ export default function ParkDetailPage() {
                         </Grid>
                         <Grid sx={{ fontSize: '1rem' }}>
                             <Typography>
-                                <b>Acreage: </b>{parkDetail && parkDetail.acreage}
+                                <b>Area: </b>{isImperial ? parkDetail?.acreage : convertAcresToHectares(parkDetail?.acreage || 0)}{isImperial ? ' Acres' : ' Hectares'}
                             </Typography>
                         </Grid>
                         <Grid>
                             <Typography>
-                                <b>Elevation (ft): </b>{parkDetail && parkDetail.elevationInFeet}
+                                <b>Elevation: </b>{isImperial ? parkDetail?.elevationInFeet : convertFeetToMeters(parkDetail?.elevationInFeet || 0)}{isImperial ? ' Feet' : '  Meters'}
                             </Typography>
                         </Grid>
                         <Grid>
                             <Typography>
-                                <b>Miles of Trail: </b>{parkDetail && parkDetail.milesOfTrail}
+                                <b>{isImperial ? ' Miles' : '  Kilometers'} of Trail: </b>{isImperial ? parkDetail?.milesOfTrail : convertMilesToKilometers(parkDetail?.milesOfTrail || 0)}
                             </Typography>
                         </Grid>
                         <Grid>
