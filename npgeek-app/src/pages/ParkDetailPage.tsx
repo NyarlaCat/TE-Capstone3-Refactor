@@ -19,7 +19,7 @@ export default function ParkDetailPage() {
             }).then(setParkDetail).catch((err) => console.error(err.message))
     }, []);
 
-    const handleClick = () => {
+    const handleConvertUnitsClick = () => {
         if (isImperial) {
             setIsImperial(false)
         } else {
@@ -40,7 +40,7 @@ export default function ParkDetailPage() {
                         <img style={{ width: '100%' }} src={`/parks/${parkDetail.imgCode}.jpg`} alt={`Photo of ${parkDetail.parkName}`} />
                     </CardMedia>
                 }
-                <Typography component='span' variant='subtitle1' sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+                <Typography component='span' variant='subtitle1' sx={{ fontStyle: 'italic', textAlign: 'center', }}>
                     {parkDetail && parkDetail.inspirationalQuote}
                 </Typography>
                 <Typography variant='subtitle2' component='span'>
@@ -50,7 +50,7 @@ export default function ParkDetailPage() {
                     <Typography component='p' sx={{ fontSize: '1rem' }}>
                         {parkDetail && parkDetail.parkDescription}
                     </Typography>
-                    <Button sx={{ position: 'relative', bottom: '-1.75rem', fontSize: '0.75rem' }} variant='contained' onClick={handleClick}>Convert units </Button>
+                    <Button sx={{ position: 'relative', bottom: '-1.75rem', fontSize: '0.75rem' }} variant='contained' onClick={handleConvertUnitsClick}>Convert units </Button>
                     <Divider sx={{ width: '100%', margin: '16px 0px' }} />
                     <Grid container spacing={2} sx={{ marginTop: '0.5rem' }} >
                         <Grid sx={{ fontSize: '1rem' }} >
