@@ -115,6 +115,7 @@ mvn clean package -DskipTests
 ```
 
 ## Running the Application
+### Starting the Java backend
 
 1. Ensure PostgreSQL is running
 ```bash
@@ -129,13 +130,13 @@ java -jar target/dependency/webapp-runner.jar target/m3-java-capstone-1.0.war
 3. Wait for Tomcat startup log
 Wait for terminal to say Tomcat started on port(s): 8080
 
-4. Open browser
-`http://localhost:8080/`
-
 5. To stop the server 
 Press `Ctrl+C` in the terminal
 
-### Rebuilding After Code Changes
+**Note**  
+The original Spring MVC project can be viewed at `http://localhost:8080/`. 
+
+#### Rebuilding After Code Changes
 If you modify any .java files or pom.xml you must rebuild the running application to see the changes take effect.
 
 1. Recompile the code 
@@ -148,6 +149,18 @@ mvn clean package -DskipTests
 java -jar target/dependency/webapp-runner.jar target/m3-java-capstone-1.0.war
 ```
 
+### Starting the Vite front end
+1. Change directories to `npgeek-app`
+
+2. If this is the first time running, install dependencies
+```bash
+npm ci
+```
+
+3. Start the project
+```bash
+npm run dev
+```
 ## Database Reset
 Use this to wipe all data and restore the original state.
 
