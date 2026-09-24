@@ -1,23 +1,16 @@
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import type { Park } from '../types/park';
 import { Box, Button, Card, CardContent, CardHeader, CardMedia, Divider, Grid } from '@mui/material';
 import { colors } from '../../designTokens/colors';
 import { convertAcresToHectares, convertFeetToMeters, convertMilesToKilometers } from '../utils/unit-conversion-utils';
+import { useGetParkDetails } from '../hooks/useGetParkDetails';
 
 export default function ParkDetailPage() {
     const [searchParams] = useSearchParams();
-    const [parkDetail, setParkDetail] = useState<Park>();
     const [isImperial, setIsImperial] = useState<boolean>(true)
 
-    useEffect(() => {
-        fetch(`/api/parkDetail?id=${searchParams.get('id')}`)
-            .then((res) => {
-                if (!res.ok) throw new Error(`/api/parks responded with status ${res.status}`);
-                return res.json() as Promise<Park>;
-            }).then(setParkDetail).catch((err) => console.error(err.message))
-    }, []);
+    const { parkDetail, isLoading, error } = useGetParkDetails({ id: searchParams.toString(), caller: 'Park details page' })
 
     const handleConvertUnitsClick = () => {
         if (isImperial) {
@@ -26,6 +19,9 @@ export default function ParkDetailPage() {
             setIsImperial(true)
         }
     }
+
+    if (isLoading) return <span>Loading...</span>
+    if (error) return <span>{error}</span>
 
     return (
         <Box sx={{ margin: '1rem' }}>
